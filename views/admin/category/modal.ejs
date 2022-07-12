@@ -1,0 +1,25 @@
+<!-- Modal -->
+<form action="/categories/create" method="post">
+  <div class="modal fade" id="createDataFormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create Category</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="form-floating mb-3">
+              <input type="text" name="name" class="form-control" id="floatingInput" placeholder="Beauty Garden">
+              <label for="floatingInput">Category Name</label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Create Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

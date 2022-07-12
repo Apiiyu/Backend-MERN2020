@@ -1,0 +1,98 @@
+<div class="col-12 col-lg-2 col-navbar d-none d-xl-block" style="margin-right: 80px">
+  <aside class="sidebar">
+    <a href="/dashboard" class="sidebar-logo">
+      <div class="d-flex justify-content-start align-items-center">
+        <img src="./assets/img/global/logo.svg" alt="">
+        <span>Staycation.</span>
+      </div>
+
+      <button id="toggle-navbar" onclick="toggleNavbar()">
+        <img src="./assets/img/global/navbar-times.svg" alt="">
+      </button>
+    </a>
+
+    <h5 class="sidebar-title">Daily Use</h5>
+
+    <a href="/dashboard" class="sidebar-item <%= url === '/dashboard' ? 'active' : '' %>">
+      <!-- <img src="./assets/img/global/grid.svg" alt=""> -->
+
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21 14H14V21H21V14Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M10 14H3V21H10V14Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M21 3H14V10H21V3Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M10 3H3V10H10V3Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+
+      <span>Dashboard</span>
+    </a>
+
+    <h5 class="sidebar-title">Master</h5>
+
+    <a href="/categories" class="sidebar-item <%= url === '/categories' ? 'active' : '' %>">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M21 16V8C20.9996 7.64927 20.9071 7.30481 20.7315 7.00116C20.556 6.69751 20.3037 6.44536 20 6.27L13 2.27C12.696 2.09446 12.3511 2.00205 12 2.00205C11.6489 2.00205 11.304 2.09446 11 2.27L4 6.27C3.69626 6.44536 3.44398 6.69751 3.26846 7.00116C3.09294 7.30481 3.00036 7.64927 3 8V16C3.00036 16.3507 3.09294 16.6952 3.26846 16.9988C3.44398 17.3025 3.69626 17.5546 4 17.73L11 21.73C11.304 21.9055 11.6489 21.9979 12 21.9979C12.3511 21.9979 12.696 21.9055 13 21.73L20 17.73C20.3037 17.5546 20.556 17.3025 20.7315 16.9988C20.9071 16.6952 20.9996 16.3507 21 16Z"
+          stroke="#ABB3C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M3.27002 6.96L12 12.01L20.73 6.96" stroke="#ABB3C4" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" />
+        <path d="M12 22.08V12" stroke="#ABB3C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+
+      <span>Categories</span>
+    </a>
+
+    <a href="/bank" class="sidebar-item <%= url === '/bank' ? 'active' : '' %>">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 1V23" stroke="#ABB3C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path
+          d="M17 5H9.5C8.57174 5 7.6815 5.36875 7.02513 6.02513C6.36875 6.6815 6 7.57174 6 8.5C6 9.42826 6.36875 10.3185 7.02513 10.9749C7.6815 11.6313 8.57174 12 9.5 12H14.5C15.4283 12 16.3185 12.3687 16.9749 13.0251C17.6313 13.6815 18 14.5717 18 15.5C18 16.4283 17.6313 17.3185 16.9749 17.9749C16.3185 18.6313 15.4283 19 14.5 19H6"
+          stroke="#ABB3C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+
+      <span>Bank</span>
+    </a>
+
+    <a href="/items" class="sidebar-item <%= url === '/items' ? 'active' : '' %>">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M21 16V8C20.9996 7.64927 20.9071 7.30481 20.7315 7.00116C20.556 6.69751 20.3037 6.44536 20 6.27L13 2.27C12.696 2.09446 12.3511 2.00205 12 2.00205C11.6489 2.00205 11.304 2.09446 11 2.27L4 6.27C3.69626 6.44536 3.44398 6.69751 3.26846 7.00116C3.09294 7.30481 3.00036 7.64927 3 8V16C3.00036 16.3507 3.09294 16.6952 3.26846 16.9988C3.44398 17.3025 3.69626 17.5546 4 17.73L11 21.73C11.304 21.9055 11.6489 21.9979 12 21.9979C12.3511 21.9979 12.696 21.9055 13 21.73L20 17.73C20.3037 17.5546 20.556 17.3025 20.7315 16.9988C20.9071 16.6952 20.9996 16.3507 21 16Z"
+          stroke="#ABB3C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M3.27002 6.96L12 12.01L20.73 6.96" stroke="#ABB3C4" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" />
+        <path d="M12 22.08V12" stroke="#ABB3C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+
+      <span>Items</span>
+    </a>
+
+    <h5 class="sidebar-title">Orders</h5>
+
+    <a href="/booking" class="sidebar-item <%= url === '/booking' ? 'active' : '' %>">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M20 7H4C2.89543 7 2 7.89543 2 9V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19V9C22 7.89543 21.1046 7 20 7Z"
+          stroke="#ABB3C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path
+          d="M16 21V5C16 4.46957 15.7893 3.96086 15.4142 3.58579C15.0391 3.21071 14.5304 3 14 3H10C9.46957 3 8.96086 3.21071 8.58579 3.58579C8.21071 3.96086 8 4.46957 8 5V21"
+          stroke="#ABB3C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+
+
+      <span>Booking</span>
+    </a>
+
+    <a href="#" class="sidebar-item">
+
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 17L21 12L16 7" stroke="#ABB3C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M21 12H9" stroke="#ABB3C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path
+          d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9"
+          stroke="#ABB3C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+
+      <span>Logout</span>
+    </a>
+
+  </aside>
+</div>

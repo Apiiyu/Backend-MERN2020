@@ -1,0 +1,40 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createDataFormModal">
+      Create Data
+    </button>
+
+    <% include ./modal.ejs %>
+    <% include ./update-modal.ejs %>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.map((item, index) => { %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= item.name %></td>
+              <td class="d-flex">
+                <form action="/categories/delete/<%= item._id %>?_method=delete" method="post">
+                  <a href="javascript:void()" type="button" id="btnUpdate" class="btn btn-sm btn-warning mr-2 btn-update" data-bs-toggle="modal" data-id="<%= item._id %>" data-name="<%= item.name %>" data-bs-target="#updateDataFormModal">
+                    Update Data
+                  </a>
+                  <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
