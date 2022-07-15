@@ -1,0 +1,41 @@
+<!-- Modal -->
+<form action="/bank/create" method="post" enctype="multipart/form-data">
+  <div class="modal fade" id="createDataFormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create Bank</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="form-floating">
+              <input type="text" name="bankName" class="form-control" id="floatingInput" required
+                placeholder="Beauty Garden">
+              <label for="floatingInput">Bank Name</label>
+            </div>
+
+            <div class="form-floating my-3">
+              <input type="text" name="accountNumber" class="form-control" id="floatingInput" required placeholder="Beauty Garden">
+              <label for="floatingInput">Account Number</label>
+            </div>
+
+            <div class="form-floating">
+              <input type="text" name="name" class="form-control" id="floatingInput" required placeholder="Beauty Garden">
+              <label for="floatingInput">Name</label>
+            </div>
+
+            <div class="form-group mt-5">
+              <label for="imageUrl">Bank Image</label>
+              <input type="file" id="imageUrl" name="imageUrl" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Create Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

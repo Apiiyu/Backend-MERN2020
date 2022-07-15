@@ -25,6 +25,10 @@ let schemaItems = mongoose.Schema({
     type: Boolean,
     default: false
   },
+  categories: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'categories'
+  },
   images: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'images'

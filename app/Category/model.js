@@ -4,7 +4,10 @@ let schemaCategories = mongoose.Schema({
     type: String,
     require: [true, 'Category name is required!'],
   },
-
+  items: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'items'
+  }]
 },{
   timestamps: true
 })

@@ -1,0 +1,54 @@
+<div class="tab-pane fade show" id="addItem" role="tabpanel" aria-labelledby="home-tab">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <form action="/items/create" method="post" enctype="multipart/form-data">
+        <div class="form-floating">
+          <input type="text" name="title" class="form-control" id="floatingInput" required placeholder="Title">
+          <label for="floatingInput">Title</label>
+        </div>
+
+        <div class="form-floating my-3">
+          <input type="number" name="price" class="form-control" id="floatingInput" required placeholder="Price">
+          <label for="floatingInput">Price</label>
+        </div>
+
+        <div class="form-floating">
+          <input type="text" name="city" class="form-control" id="floatingInput" required placeholder="City">
+          <label for="floatingInput">City</label>
+        </div>
+
+        <div class="form-floating mt-3">
+          <input type="text" name="country" class="form-control" id="floatingInput" required placeholder="Country">
+          <label for="floatingInput">Country</label>
+        </div>
+
+        <div class="form-group">
+          <label for="categories"></label>
+          <select class="form-select" id="categories" name="categories" aria-label="Default select example">
+            <option selected disabled>---- Choose Category ----</option>
+            <%  categories.map((item, index) => { %>
+              <option value="<%= item._id %>"><%= item.name %></option>
+            <% }) %>
+          </select>
+        </div>
+
+        <div class="my-3">
+          <label for="images" class="form-label">Images</label>
+          <input class="form-control" type="file" name="images" id="images" multiple>
+        </div>
+
+        <div class="form-group">  
+          <label for="editor">Description</label>
+          <textarea name="description" id="editor" cols="30" rows="30">
+          </textarea>
+        </div>
+
+        <div class="d-flex justify-content-end mt-5">
+          <div class="btn-group">
+            <button type="submit" class="btn btn-primary">Create Data</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

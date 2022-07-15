@@ -1,0 +1,47 @@
+<!-- Modal -->
+<form action="/bank/update?_method=put" method="post" enctype="multipart/form-data">
+  <div class="modal fade" id="updateDataFormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Bank</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="hidden" name="id" class="id">
+
+            <div class="form-floating">
+              <input type="text" name="bankName" class="form-control bankName" id="floatingInput" required
+                placeholder="Beauty Garden">
+              <label for="floatingInput">Bank Name</label>
+            </div>
+
+            <div class="form-floating my-3">
+              <input type="text" name="accountNumber" class="form-control accountNumber" id="floatingInput" required
+                placeholder="Beauty Garden">
+              <label for="floatingInput">Account Number</label>
+            </div>
+
+            <div class="form-floating">
+              <input type="text" name="name" class="form-control name" id="floatingInput" required
+                placeholder="Beauty Garden">
+              <label for="floatingInput">Name</label>
+            </div>
+
+            <div class="form-group mt-5">
+              <label for="floatingInput">Bank Image</label>
+              <input type="file" name="imageUrl" class="form-control" id="imageUrl">
+            </div>
+
+            <img src="" alt="img-preview" class="img-preview rounded-3" style="max-width: 150px; max-height: 150px;">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Update Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

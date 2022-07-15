@@ -5,9 +5,33 @@
         <div class="content">
           <div class="row">
             <div class="col-lg-12 col-md-6 ">
+              <% if (alert.message !='' ) { %>
+                <div class="alert <%= alert.status == 'success' ? 'alert-success' : 'alert-danger' %> alert-dismissible fade show"
+                  role="alert">
+                  <strong>
+                    <%= alert.status=='success' ? 'Congratulations!' : 'Sorry!' %>
+                  </strong>
+                  <%= alert.message %>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              <% } %>
               <% include ./table.ejs %>
             </div>
           </div>
         </div>
+      <% include ../../partials/js.ejs %>
+    <script>
+      $('#dataTable').on('click', '.btn-update', function() {
+        let id = $(this).data('id')
+        let bankName = $(this).data('bankname')
+        let accountNumber = $(this).data('accountnumber')
+        let name = $(this).data('name')
+        let imageUrl = $(this).data('imageurl')
 
-        <% include ../../partials/js.ejs %>
+        $('.id').val(id)
+        $('.bankName').val(bankName)
+        $('.accountNumber').val(accountNumber)
+        $('.name').val(name)
+        $('.img-preview').attr('src', `/assets/uploads/banks/${imageUrl}`)
+      })
+    </script>

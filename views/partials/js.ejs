@@ -10,6 +10,7 @@
 <script src="/sb-admin-2/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <!-- Page level custom scripts -->
 <script src="/sb-admin-2/js/demo/datatables-demo.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
 
 <script>
   const navbar = document.querySelector('.col-navbar')
@@ -21,6 +22,12 @@
     navbar.classList.toggle('d-none')
     cover.classList.toggle('d-none')
   }
+
+  ClassicEditor
+    .create( document.querySelector( '#editor' ) )
+    .catch( error => {
+        console.error( error );
+    });
 </script>
 </body>
 

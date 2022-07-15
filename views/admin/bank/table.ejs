@@ -1,19 +1,54 @@
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createDataFormModal">
+      Create Data
+    </button>
+    
+    <% include ./modal.ejs %>
+    <% include ./update-modal.ejs %>
   </div>
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <table class="table table-bordered" id="dataTable" width="100%">
         <thead>
           <tr>
             <th>No</th>
             <th>Bank Name</th>
             <th>Account Number</th>
             <th>Name</th>
+            <th>Bank Image</th>
             <th>Actions</th>
           </tr>
         </thead>
+        <tbody>
+          <% data.map((item, index) => { %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= item.bankName %></td>
+              <td><%= item.accountNumber%></td>
+              <td><%= item.name %></td>
+              <td style="max-width: 150px;">
+                <img src="/assets/uploads/banks/<%= item.imageUrl%>" class="rounded-3" width="120px" height="120px" >
+              </td>
+              <td class="d-flex">
+                <form action="/bank/delete/<%= item._id %>?_method=delete" method="post">
+                  <a href="javascript:void()" type="button" class="btn btn-sm btn-warning mr-2 btn-update"
+                    data-bs-toggle="modal" 
+                    data-id="<%= item._id %>" 
+                    data-bankName="<%= item.bankName %>" 
+                    data-accountNumber="<%= item.accountNumber %>" 
+                    data-name="<%= item.name %>" 
+                    data-imageUrl="<%= item.imageUrl %>"
+                    data-bs-target="#updateDataFormModal">
+                    Update Data
+                  </a>
+                  <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
       </table>
     </div>
   </div>

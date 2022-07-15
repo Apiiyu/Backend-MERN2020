@@ -25,7 +25,7 @@
               <td><%= item.name %></td>
               <td class="d-flex">
                 <form action="/categories/delete/<%= item._id %>?_method=delete" method="post">
-                  <a href="javascript:void()" type="button" id="btnUpdate" class="btn btn-sm btn-warning mr-2 btn-update" data-bs-toggle="modal" data-id="<%= item._id %>" data-name="<%= item.name %>" data-bs-target="#updateDataFormModal">
+                  <a href="javascript:void()" type="button" class="btn btn-sm btn-warning mr-2 btn-update" data-bs-toggle="modal" data-id="<%= item._id %>" data-name="<%= item.name %>" data-bs-target="#updateDataFormModal">
                     Update Data
                   </a>
                   <button type="submit" class="btn btn-sm btn-danger">Delete</button>

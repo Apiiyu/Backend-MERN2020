@@ -17,6 +17,10 @@ let schemaActivities = mongoose.Schema({
     type: String,
     require: [true, 'Country is required!']
   },
+  items: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'items'
+  }
 },{
   timestamps: true
 })

@@ -13,6 +13,10 @@ let schemaBank = mongoose.Schema({
     type: String,
     require: [true, 'Name is required!']
   },
+  imageUrl: {
+    type: String,
+    require: [true, 'Bank Image is required!']
+  }
 },{
   timestamps: true
 })
