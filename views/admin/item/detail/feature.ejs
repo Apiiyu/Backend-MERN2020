@@ -1,0 +1,87 @@
+<div class="tab-pane fade show active" id="showFeatures" role="tabpanel" aria-labelledby="home-tab">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-5">
+          <% include ./modal_feature.ejs %>
+          <form action="/items/features/create" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+              <div class="form-floating">
+                <input type="text" name="name" class="form-control" id="floatingInput" required
+                  placeholder="Beauty Garden">
+                <label for="floatingInput">Name Feature</label>
+              </div>
+
+              <div class="form-floating my-3">
+                <input type="number" name="qty" class="form-control" id="floatingInput" required placeholder="Beauty Garden">
+                <label for="floatingInput">Quantity Feature</label>
+              </div>
+
+              <div class="form-group">
+                <label for="images">Image Feature</label>
+                <input type="file" id="imageUrl" name="images" class="form-control">
+              </div>
+
+              <input type="hidden" name="items" value="<%= itemsId %>">
+
+              <div class="d-flex">
+                <button class="btn btn-secondary btn-sm me-3">Back</button>
+                <button class="btn btn-primary btn-sm" type="submit">Create Data</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-7">
+          <table class="table table-bordered" id="dataTable">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Qty</th>
+                <th>Image</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% features.map((item, index) => { %>
+                <tr>
+                  <td>
+                    <%= index + 1 %>
+                  </td>
+                  
+                  <td>
+                    <%= item.name %>
+                  </td>
+                  
+                  <td>
+                    <%= item.qty %>
+                  </td>
+                  
+                  <td style="max-width: 150px;">
+                    <img src="/assets/uploads/features/<%= item.imageUrl %>" class="rounded-3" width="48px" height="48px" >
+                  </td>
+
+                  <td class="d-flex">
+                    <form action="/items/features/delete/<%= item._id %>?_method=delete" method="post">
+                      <a href="javascript:void()" type="button" class="btn btn-sm btn-warning mr-2 btn-update-feature"
+                        data-bs-toggle="modal" 
+                        data-id="<%= item._id %>" 
+                        data-name="<%= item.name %>" 
+                        data-qty="<%= item.qty %>" 
+                        data-items="<%= item.items %>" 
+                        data-image="<%= item.imageUrl %>"
+                        data-bs-target="#updateDataFormModal">
+                        Update Data
+                      </a>
+                      <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

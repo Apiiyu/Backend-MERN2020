@@ -14,6 +14,8 @@ const categoryRouter = require('./app/Category/router')
 const bankRouter = require('./app/Bank/router')
 const itemRouter = require('./app/Item/router')
 const bookingRouter = require('./app/Booking/router')
+const featuresRouter = require('./app/Feature/router')
+const activitiesRouter = require('./app/Activity/router')
 
 const app = express();
 
@@ -42,6 +44,8 @@ app.use('/dashboard', dashboardRouter);
 app.use('/categories', categoryRouter);
 app.use('/bank', bankRouter);
 app.use('/items', itemRouter);
+app.use('/items/features', featuresRouter)
+app.use('/items/activities', activitiesRouter)
 app.use('/booking', bookingRouter);
 
 // catch 404 and forward to error handler

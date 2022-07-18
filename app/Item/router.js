@@ -5,6 +5,7 @@ const multer = require('multer')
 
 router.get('/', controller.viewItem)
 router.get('/view/images/:id', controller.viewImages)
+router.get('/detail/:id', controller.viewDetail)
 router.get('/update/:id', controller.viewUpdate)
 router.post('/create', multer({dest: os.tmpdir()}).array('images'), controller.createData)
 router.put('/update/:id', multer({dest: os.tmpdir()}).array('images'), controller.updateData)

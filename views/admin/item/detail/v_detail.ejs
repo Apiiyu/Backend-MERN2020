@@ -1,0 +1,72 @@
+<% include ../../../partials/header.ejs %>
+  <% include ../../../partials/sidebar.ejs %>
+    <div class="col-12 col-xl-9">
+      <% include ../../../partials/navbar.ejs %>
+        <div class="content">
+          <div class="row">
+            <div class="col-lg-12 col-md-6 ">
+              <% if (alert.message != '') { %> 
+                <div class="alert <%= alert.status == 'success' ? 'alert-success' : 'alert-danger' %> alert-dismissible fade show" role="alert">
+                  <strong> <%= alert.status == 'success' ? 'Congratulations!' : 'Sorry!' %> </strong> <%= alert.message %>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              <% } %>
+              
+              <div class="d-flex w-100">
+                <ul class="nav nav-tabs border-bottom-0" id="myTab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="item-tab" data-bs-toggle="tab" data-bs-target="#showFeatures" type="button" role="tab" aria-controls="home" aria-selected="true">Show Features</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#showActivity" type="button" role="tab" aria-controls="profile" aria-selected="false">Show Activity</button>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="tab-content" id="myTabContent">
+                <% include ./feature.ejs %>
+                <% include ./activity.ejs %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <% include ../../../partials/js.ejs %>
+      <script>
+        $(document).ready(() => {
+          $('#dataTable').on('click', '.btn-update-feature', function() {
+            let id = $(this).data('id')
+            let items = $(this).data('items')
+            let name = $(this).data('name')
+            let qty = $(this).data('qty')
+            let image = $(this).data('image')
+            const imageUrl = `/assets/uploads/features/${image}`       
+  
+            $('.id').val(id)
+            $('.name').val(name)
+            $('.qty').val(qty)
+            $('.items').val(items)
+            $('.img-preview').attr('src', imageUrl)
+          })
+        })
+
+        $('#dataTableActivity').on('click', '.btn-update-activity', function() {
+          let id = $(this).data('id')
+          let items = $(this).data('items')
+          let name = $(this).data('name')
+          let type = $(this).data('type')
+          let image = $(this).data('image')
+          let isPopular = $(this).data('ispopular')
+          const imageUrl = `/assets/uploads/activities/${image}`
+
+          $('.id').val(id)
+          $('.items').val(items)
+          $('.name').val(name)
+          $('.type').val(type)
+          $('.img-preview').attr('src', imageUrl)
+
+          if(isPopular) {
+           $('is-popular').attr('checked')
+          }  
+        })
+    </script>

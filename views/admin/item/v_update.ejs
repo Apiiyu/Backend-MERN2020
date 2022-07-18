@@ -29,7 +29,7 @@
             <% categories.map((item, index) => { %>
               <option 
                 value="<%= item._id %>" 
-                <% if(item._id === item._id) { %> selected <% } %>
+                <% if(item._id.toString() === data.categories?._id.toString()) { %> selected <% } %>
               >
                 <%= item.name %>
               </option>

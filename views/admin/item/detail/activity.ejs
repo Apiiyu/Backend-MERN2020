@@ -1,0 +1,93 @@
+<div class="tab-pane fade" id="showActivity" role="tabpanel" aria-labelledby="home-tab">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-5">
+          <% include ./modal_activity.ejs %>
+          <form action="/items/activities/create" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+              <div class="form-floating">
+                <input type="text" name="name" class="form-control" id="floatingInput" required
+                  placeholder="Beauty Garden">
+                <label for="floatingInput">Name Activity</label>
+              </div>
+
+              <div class="form-floating my-3">
+                <input type="text" name="type" class="form-control" id="floatingInput" required placeholder="Beauty Garden">
+                <label for="floatingInput">Type Activity</label>
+              </div>
+
+              <div class="form-group">
+                <label for="imageUrl">Image</label>
+                <input type="file" id="imageUrl" name="imageUrl" class="form-control">
+              </div>
+
+              <div class="form-check form-switch m-sm-4 mb-5">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="isPopular" />
+                <label class="form-check-label" for="flexSwitchCheckChecked">Set to Popular ?</label>
+              </div>
+
+              <input type="hidden" name="items" value="<%= itemsId %>">
+
+              <div class="d-flex">
+                <button class="btn btn-secondary btn-sm me-3">Back</button>
+                <button class="btn btn-primary btn-sm">Create Data</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-7">
+          <table class="table table-bordered" id="dataTableActivity">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Image</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% activities.map((item, index) => { %>
+                <tr>
+                  <td>
+                    <%= index + 1 %>
+                  </td>
+
+                  <td>
+                    <%= item.name %>
+                  </td>
+                  
+                  <td>
+                    <%= item.type %>
+                  </td>
+
+                  <td style="max-width: 150px;">
+                      <img src="/assets/uploads/activities/<%= item.imageUrl %>" class="rounded-3" width="100%" height="100%" >
+                    </td>
+
+                    <td class="d-flex flex-column-reverse">
+                      <form action="/items/activities/delete/<%= item._id %>?_method=delete" method="post">
+                        <a href="javascript:void()" type="button" class="btn btn-sm btn-warning mr-2 btn-update-activity w-100"
+                          data-bs-toggle="modal" 
+                          data-id="<%= item._id %>" 
+                          data-items="<%= itemsId %>"
+                          data-name="<%= item.name %>" 
+                          data-type="<%= item.type %>" 
+                          data-image="<%= item.imageUrl %>"
+                          data-isPopular="<%= item.isPopular %>"
+                          data-bs-target="#updateDataActivitiesFormModal">
+                          Update Data
+                        </a>
+                        <button type="submit" class="btn btn-sm btn-danger mt-3 w-100">Delete</button>
+                      </form>
+                    </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

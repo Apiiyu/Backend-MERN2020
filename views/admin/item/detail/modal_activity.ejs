@@ -1,0 +1,47 @@
+<!-- Modal -->
+<form action="/items/activities/update?_method=put" method="post" enctype="multipart/form-data">
+  <div class="modal fade" id="updateDataActivitiesFormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Activity</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="form-floating">
+              <input type="text" name="name" class="form-control name" id="floatingInput" required
+                placeholder="Beauty Garden">
+              <label for="floatingInput">Activity Name</label>
+            </div>
+
+            <div class="form-floating my-3">
+              <input type="text" name="type" class="form-control type" id="floatingInput" required
+                placeholder="Beauty Garden">
+              <label for="floatingInput">Activity Type</label>
+            </div>
+
+            <input type="hidden" name="id" class="id">
+            <input type="hidden" name="items" class="items">
+
+            <div class="form-group mt-5">
+              <label for="floatingInput">Activity Image</label>
+              <input type="file" name="imageUrl" class="form-control" id="images">
+            </div>
+            
+            <img src="" alt="img-preview" class="img-preview rounded-3" style="max-width: 150px; max-height: 150px;">
+            
+            <div class="form-check form-switch m-sm-4 mb-5">
+              <input class="form-check-input is-popular" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="isPopular" />
+              <label class="form-check-label" for="flexSwitchCheckChecked">Set to Popular ?</label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Update Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

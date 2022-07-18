@@ -15,7 +15,6 @@ let schemaActivities = mongoose.Schema({
   },
   imageUrl: {
     type: String,
-    require: [true, 'Country is required!']
   },
   items: {
     type: mongoose.Schema.Types.ObjectId,

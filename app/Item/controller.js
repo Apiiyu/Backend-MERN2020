@@ -1,6 +1,8 @@
 const Category = require('../Category/model')
 const Item = require('./model')
 const Image = require('../Image/model')
+const Feature = require('../Feature/model')
+const Activity = require('../Activity/model')
 const fs = require('fs')
 const path = require('path')
 const config = require('../../config/env')
@@ -79,6 +81,30 @@ module.exports = {
     }
   },
 
+  viewDetail: async (request, response) => {
+    const { id } = request.params
+    try {
+      const message = request.flash('message')
+      const status = request.flash('status')
+      const alert = {message, status}
+      const features = await Feature.find().populate('items')
+      const activities = await Activity.find().populate('items')
+
+      response.render('admin/item/detail/v_detail', {
+        title: 'Detail Items',
+        url: '/items',
+        alert,
+        features,
+        activities,
+        itemsId: id,
+      })
+    } catch (error) {
+      request.flash('message', 'Failed get data!')
+      request.flash('status', 'danger')
+      response.redirect('/items')
+    }
+  },
+
   createData: async (request, response) => {
     try {
       const { title, price, categories, city, country, description } = request.body
@@ -133,6 +159,7 @@ module.exports = {
     try {
       const { id } = request.params
       const { title, price, categories, city, country, description } = request.body
+      console.log(categories)
       const images = request.files
       const selectedItem = await Item.findById(id).populate({ path: 'images', select: 'id imageUrl'})
       .populate({ path: 'categories', select: 'id name'})
@@ -151,9 +178,8 @@ module.exports = {
           let tmp_path = items.path
           let originalExt = items.originalname.split('.')[items.originalname.split('.').length - 1]
           let filename = items.filename + '.' + originalExt
-          let target_path = path.resolve(config.rootPath, `public/assets/uploads/items/${filename}`)
-          console.log({filename})
-  
+          let target_path = `${config.rootPath}/public/assets/uploads/items/${filename}`
+
           const src = fs.createReadStream(tmp_path)
           const destination = fs.createWriteStream(target_path)
 
@@ -167,18 +193,33 @@ module.exports = {
               categories,
               city,
               country,
-              images: newImage._id,
               description
             }
 
-            selectedItem.update(payload)
+            await Item.findByIdAndUpdate(id, payload)
+            selectedItem.images.push({ _id: newImage._id })
+            selectedItem.save()
+
             request.flash('message', 'Successfully update data items!')
             request.flash('status', 'success')
             response.redirect('/items')
           })
         })
+      } else {
+        let payload = {
+          title, 
+          price,
+          categories,
+          city,
+          country,
+          description
+        }
+  
+        await Item.findByIdAndUpdate(id, payload)
+        request.flash('message', 'Successfully update data items!')
+        request.flash('status', 'success')
+        response.redirect('/items')
       }
-
     } catch (error) {
       request.flash('message', 'Failed update data!')
       request.flash('status', 'danger')
