@@ -1,0 +1,47 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <a href="/booking" class="btn btn-primary">Back</a>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="/assets/uploads/booking/<%= data.payments.proofPayment %>" class="w-100 d-block" alt="">
+
+        <div class="d-flex mt-3">
+          <form action="/booking/update/status/<%= data._id %>?_method=PUT" method="post" class="mr-2">
+            <input type="submit" name="status" class="btn btn-success btn-sm" value="Success">
+            <input type="submit" name="status" class="btn btn-danger btn-sm" value="Failed">
+          </form>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <table class="table table-bordered" id="dataTableActivity">
+          <thead>
+            <tr>
+              <th>Member name</th>
+              <th>Total</th>
+              <th>Bank From</th>
+              <th>Title</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <%= data.members.firstName %> <%= data.members.lastName %> 
+              </td>
+              <td>
+                <%= data.total %> 
+              </td>
+              <td>
+                <%= data.payments.bankFrom %> 
+              </td>
+              <td>
+                <%= data.items.title %> 
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

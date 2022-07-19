@@ -5,6 +5,16 @@
     <div class="col-12 col-xl-9">
       <% include ./partials/navbar.ejs %>
       <div class="content">
+        <% if (alert.message !='' ) { %>
+          <div class="alert <%= alert.status == 'success' ? 'alert-success' : 'alert-danger' %> alert-dismissible fade show"
+            role="alert">
+            <strong>
+              <%= alert.status=='success' ? 'Congratulations!' : 'Sorry!' %>
+            </strong>
+            <%= alert.message %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% } %>
         <div class="row">
           <div class="col-12">
             <h2 class="content-title">Statistics</h2>

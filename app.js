@@ -6,9 +6,10 @@ const logger = require('morgan');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const session = require('express-session');
+const { isLoginAdmin } = require('./app/Middleware/auth')
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const usersRouter = require('./app/User/router');
 const dashboardRouter = require('./app/Dashboard/router');
 const categoryRouter = require('./app/Category/router')
 const bankRouter = require('./app/Bank/router')
@@ -27,7 +28,7 @@ app.use(session({
   secret: 'staycation',
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 1000 }
+  cookie: {}
 }))
 app.use(flash())
 app.use(methodOverride('_method'))
@@ -39,13 +40,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/sb-admin-2', express.static(path.join(__dirname, 'node_modules/startbootstrap-sb-admin-2')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/dashboard', dashboardRouter);
-app.use('/categories', categoryRouter);
-app.use('/bank', bankRouter);
-app.use('/items', itemRouter);
-app.use('/items/features', featuresRouter)
-app.use('/items/activities', activitiesRouter)
+app.use('/auth', usersRouter)
+app.use('/dashboard', isLoginAdmin ,dashboardRouter);
+app.use('/categories', isLoginAdmin ,categoryRouter);
+app.use('/bank', isLoginAdmin ,bankRouter);
+app.use('/items', isLoginAdmin ,itemRouter);
+app.use('/items/features', isLoginAdmin ,featuresRouter)
+app.use('/items/activities', isLoginAdmin ,activitiesRouter)
 app.use('/booking', bookingRouter);
 
 // catch 404 and forward to error handler

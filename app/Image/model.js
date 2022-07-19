@@ -4,9 +4,8 @@ let schemaImages = mongoose.Schema({
     type: String,
     require: [true, 'Image Url is required!'],
   },
-
 },{
   timestamps: true
 })
 
-module.exports = mongoose.model('images', schemaImages)
+module.exports = mongoose.model('Image', schemaImages)

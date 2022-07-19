@@ -15,10 +15,10 @@ let schemaFeature = mongoose.Schema({
   },
   items: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'items'
+    ref: 'Item'
   }
 },{
   timestamps: true
 })
 
-module.exports = mongoose.model('features', schemaFeature)
+module.exports = mongoose.model('Feature', schemaFeature)

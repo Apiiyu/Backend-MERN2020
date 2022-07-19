@@ -18,10 +18,10 @@ let schemaActivities = mongoose.Schema({
   },
   items: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'items'
+    ref: 'Item'
   }
 },{
   timestamps: true
 })
 
-module.exports = mongoose.model('activities', schemaActivities)
+module.exports = mongoose.model('Activity', schemaActivities)

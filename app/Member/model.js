@@ -31,6 +31,7 @@ let schemaMember = mongoose.Schema({
   },
   avatar: {
     type: String,
+    default: ''
   },
 }, {
   timestamps: true
@@ -38,7 +39,7 @@ let schemaMember = mongoose.Schema({
 
 schemaMember.path('email').validate(async (value) => {
   try {
-    const count = await mongoose.model('members').countDocuments({email: value})
+    const count = await mongoose.model('Member').countDocuments({email: value})
     return !count
   } catch (error) {
     throw error
@@ -46,4 +47,4 @@ schemaMember.path('email').validate(async (value) => {
 }, attrribute => `${attrribute.value} has already registered!`)
 
 
-module.exports = mongoose.model('members', schemaMember)
+module.exports = mongoose.model('Member', schemaMember)

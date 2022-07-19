@@ -11,9 +11,8 @@ module.exports = {
   viewItem: async (request, response) => {
     try {
       const categories = await Category.find()
-      const data = await Item.find()
-      .populate({ path: 'images', select: 'id imagesUrl'})
-      .populate({ path: 'categories', select: 'id name'})
+      const data = await Item.find().populate('images').populate('features').populate('activities')
+      console.log(data, 'data')
       const message = request.flash('message')
       const status = request.flash('status')
       const alert = {message, status}

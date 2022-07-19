@@ -21,4 +21,4 @@ let schemaBank = mongoose.Schema({
   timestamps: true
 })
 
-module.exports = mongoose.model('banks', schemaBank)
+module.exports = mongoose.model('Bank', schemaBank)

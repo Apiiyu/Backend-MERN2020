@@ -16,6 +16,42 @@
             <th>Actions</th>
           </tr>
         </thead>
+
+        <tbody>
+          <% data.map((item, index) => { %>
+            <tr>
+              <td>
+                <%= index + 1 %>
+              </td>
+
+              <td>
+                <%= item.startDate.toLocaleString().split(',')[0] %> - <%= item.endDate.toLocaleString().split(',')[0] %>
+              </td>
+
+              <td>
+                <%= item.items.title %>
+              </td>
+
+              <td>
+                <%= item.members.firstName %> <%= item.members.lastName %>
+              </td>
+
+              <td>
+                <%= item.banks.bankName %>
+              </td>
+
+              <td>
+                <%= item.payments.status %>
+              </td>
+
+              <td class="d-flex">
+                <a href="/booking/detail/<%= item._id %>" class="btn btn-sm btn-circle btn-primary">
+                  <i class="fas fa-eye"></i>
+                </a>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
       </table>
     </div>
   </div>

@@ -9,50 +9,58 @@ let schemaBooking = mongoose.Schema({
     type: Date,
     require: [true, 'End Date Booking is required!']
   },
-  proofPayment: {
-    type: String,
-    require: [true, 'Proof Payment is required!']
+  payments: {
+    proofPayment: {
+      type: String,
+      require: [true, 'Proof Payment is required!']
+    },
+    bankFrom: {
+      type: String,
+      require: [true, 'Bank From is required!']
+    },
+    bankHolder: {
+      type: String,
+      require: [true, 'Description is required!']
+    },
+    status: {
+      type: String,
+      enum: ['Failed', 'Process', 'Success'],
+      default: 'Process'
+    },
   },
-  bankFrom: {
-    type: String,
-    require: [true, 'Bank From is required!']
+  invoice: {
+    type: Number,
   },
-  bankHolder: {
-    type: String,
-    require: [true, 'Description is required!']
+  total: {
+    type: Number,
   },
-  imageUrl: {
-    type: String,
-    default: false
-  },
-  status: {
-    type: Boolean,
-    default: false
-  },
-  items: [{
+  items: {
     _id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'items'
+      ref: 'Item'
+    },
+    title: {
+      type: String,
     },
     price: {
       type: Number,
       require: [true, 'Price Items is required!']
     },
-    night: {
+    duration: {
       type: Number,
-      require: [true, 'Long Night is required!']
+      require: [true, 'Duration is required!']
     }
-  }],
-  members: [{
+  },
+  members: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'members'
-  }],
-  banks: [{
+    ref: 'Member'
+  },
+  banks: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'banks'
-  }]
+    ref: 'Bank'
+  }
 },{
   timestamps: true
 })
 
-module.exports = mongoose.model('bookings', schemaBooking)
+module.exports = mongoose.model('Booking', schemaBooking)

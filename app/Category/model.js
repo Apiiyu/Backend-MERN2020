@@ -12,4 +12,4 @@ let schemaCategories = mongoose.Schema({
   timestamps: true
 })
 
-module.exports = mongoose.model('categories', schemaCategories);
+module.exports = mongoose.model('Category', schemaCategories);
