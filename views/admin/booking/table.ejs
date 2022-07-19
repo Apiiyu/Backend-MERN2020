@@ -8,10 +8,10 @@
         <thead>
           <tr>
             <th>No</th>
+            <th>Invoice</th>
             <th>Date</th>
             <th>Title</th>
             <th>Member name</th>
-            <th>Bank Name</th>
             <th>Status</th>
             <th>Actions</th>
           </tr>
@@ -25,6 +25,10 @@
               </td>
 
               <td>
+                #<%= item.invoice %>
+              </td>
+
+              <td>
                 <%= item.startDate.toLocaleString().split(',')[0] %> - <%= item.endDate.toLocaleString().split(',')[0] %>
               </td>
 
@@ -34,10 +38,6 @@
 
               <td>
                 <%= item.members.firstName %> <%= item.members.lastName %>
-              </td>
-
-              <td>
-                <%= item.banks.bankName %>
               </td>
 
               <td>

@@ -8,6 +8,8 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const { isLoginAdmin } = require('./app/Middleware/auth')
 
+const apiRouter = require('./api/router')
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./app/User/router');
 const dashboardRouter = require('./app/Dashboard/router');
@@ -40,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/sb-admin-2', express.static(path.join(__dirname, 'node_modules/startbootstrap-sb-admin-2')));
 
 app.use('/', indexRouter);
+app.use('/api/v1', apiRouter)
 app.use('/auth', usersRouter)
 app.use('/dashboard', isLoginAdmin ,dashboardRouter);
 app.use('/categories', isLoginAdmin ,categoryRouter);

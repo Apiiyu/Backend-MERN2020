@@ -25,6 +25,14 @@ let schemaItems = mongoose.Schema({
     type: String,
     require: [true, 'City is required!']
   },
+  unit: {
+    type: String,
+    default: 'Night'
+  },
+  sumBooking: {
+    type: Number,
+    default: 0
+  },
   description: {
     type: String,
     require: [true, 'Description is required!']
