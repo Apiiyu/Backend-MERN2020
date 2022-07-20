@@ -91,7 +91,7 @@ module.exports = {
 
   booking: async (request, response) => {
     try {
-      const { itemsId, duration, price, startDate, endDate, firstName, lastName, email, phoneNumber, bankHolder, bankFrom } = request.body
+      const { itemsId, duration, startDate, endDate, firstName, lastName, email, phoneNumber, bankHolder, bankFrom } = request.body
 
       if (!itemsId || !duration || !startDate || !endDate || !firstName || !lastName || !email || !phoneNumber || !bankHolder || !bankFrom) {
         return response.status(400).json({
@@ -157,20 +157,6 @@ module.exports = {
         })
       }
     } catch (error) {
-      if(error.name === 'ValidationError') {
-        let errors = {};
- 
-        Object.keys(error.errors).forEach((key) => {
-          errors[key] = error.errors[key].message;
-        });
-
-        console.log(errors)
-  
-        return response.status(400).json({
-          message: errors
-        });
-      }
-
       response.status(500).json({
         message: 'Server Internal Error'
       })
