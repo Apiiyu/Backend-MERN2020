@@ -5,7 +5,7 @@
   <div class="card-body">
     <div class="row">
       <div class="col-md-4">
-        <img src="/assets/uploads/booking/<%= data.payments.proofPayment %>" class="w-100 d-block" alt="">
+        <img src="https://staycation-id.herokuapp.com/public/assets/uploads/booking/<%= data.payments.proofPayment %>" class="w-100 d-block" alt="">
 
         <div class="d-flex mt-3">
           <form action="/booking/update/status/<%= data._id %>?_method=PUT" method="post" class="mr-2">

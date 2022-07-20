@@ -29,7 +29,7 @@
               <td><%= item.accountNumber%></td>
               <td><%= item.name %></td>
               <td style="max-width: 150px;">
-                <img src="/assets/uploads/banks/<%= item.imageUrl%>" class="rounded-3" width="120px" height="120px" >
+                <img src="https://staycation-id.herokuapp.com/public/assets/uploads/banks/<%= item.imageUrl%>" class="rounded-3" width="120px" height="120px" >
               </td>
               <td class="d-flex">
                 <form action="/bank/delete/<%= item._id %>?_method=delete" method="post">

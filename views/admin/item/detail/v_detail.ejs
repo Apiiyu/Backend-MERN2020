@@ -40,7 +40,7 @@
             let name = $(this).data('name')
             let qty = $(this).data('qty')
             let image = $(this).data('image')
-            const imageUrl = `/assets/uploads/features/${image}`       
+            const imageUrl = `https://staycation-id.herokuapp.com/public/assets/uploads/features/${image}`       
   
             $('.id').val(id)
             $('.name').val(name)
@@ -57,7 +57,7 @@
           let type = $(this).data('type')
           let image = $(this).data('image')
           let isPopular = $(this).data('ispopular')
-          const imageUrl = `/assets/uploads/activities/${image}`
+          const imageUrl = `https://staycation-id.herokuapp.com/public/assets/uploads/activities/${image}`
 
           $('.id').val(id)
           $('.items').val(items)
